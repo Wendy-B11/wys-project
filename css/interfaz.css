@@ -1,0 +1,30 @@
+html{
+  background-image: url(../imgs/chao.png);
+  background-attachment: fixed;
+  background-size: cover;
+}
+#tittle{
+  margin-top: 150px;
+  text-align: center;
+  font-size: 4em;
+  font-family:'Elephant';
+  color:snow;
+  border-radius: 100%;
+  text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+}
+.logo{
+  margin-top: 100px;
+  border-radius: 100%;
+  padding:10px;
+  display:block;
+  margin: auto;
+  width: 300px;
+  background-color: rgb(131, 174, 253);
+  opacity: 0.6;
+  transition: 0.5s;
+}
+.logo:hover{
+  box-shadow:-5px -5px 7px rgb(28, 53, 47), 1em 1em 10em rgb(9, 113, 145), 2em 2em 20em rgb(10, 55, 68);
+  width: 400px;
+  opacity:1;
+}

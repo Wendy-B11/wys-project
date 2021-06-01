@@ -1,0 +1,25 @@
+
+html{
+	background: url(../imgs/holia.gif);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+}
+.naranja{
+	background-color: rgba(227, 230, 215, 0.6);
+	}
+.gris{
+	background-color: rgba(59, 84, 85, 0.6);
+	}
+#cuadricula{
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	width: 500px;
+	width: 500px;
+	margin: 0 auto;
+	background-color: white
+	}
