@@ -110,6 +110,7 @@ function registerFunction(){
 		}
 
 
+
  /*      let nombre, usuarioRegistro, contraRegistro, confirmarRegistro, regis;
 
         function obtener(evento){
