@@ -1,5 +1,7 @@
 var puesto_actual;
 var id_actual;
+var id_boton;
+var reservas;
 
 window.onload = init;
 
@@ -7,19 +9,21 @@ function init()
 {
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
+	reservas = [];
 	cargarReserva();
 }
 
 function cargarReserva(){
-	var puesto;
-	for(var i=1;i<=9;i++)
+	var puesto, usuario;
+	for(var i=1;i<=9;i++)//i = i + 1
 	{
 		//console.log(localStorage.getItem("puesto_"+i));
 		if(localStorage.getItem("puesto_"+i)!=null)
 		{
-			puesto = document.getElementById("puesto_"+i);
-			puesto.className = "reservado";
-			puesto.innerHTML = localStorage.getItem("puesto_"+i);
+			puesto = document.getElementById("puesto_"+i);			
+			usuario = JSON.parse(localStorage.getItem("puesto_"+i));
+			actualizarEstado(puesto,usuario);
+			reservas[i] = usuario;
 		}
 	}
 }
@@ -28,19 +32,40 @@ function cerrarVentana(){
   ventana.className = "ligthbox hidden";
 }
 
-function crearReserva(numero){
-	id_actual = "puesto_"+numero;
+function mostrarVentana(datos)
+{
+	id_actual = "puesto_"+datos.numero;
+	id_boton = datos.numero;
 	puesto_actual = document.getElementById(id_actual);
 	ventana.className = "ligthbox";
-	input_name.value = "";
+	input_name.value = datos.nombre?datos.nombre:"";
+}
+
+function crearReserva(numero){
+	mostrarVentana({nombre:"",numero:numero});
+}
+
+function editarReserva(numero){
+	mostrarVentana({nombre:reservas[numero].nombre,numero:numero});	
+}
+
+function actualizarEstado(puesto,usuario)
+{
+	 var temp;
+	  puesto.className = "reservado";
+		temp = "<h2>Reservado</h2>"+usuario.nombre;
+		temp += '<img class="btn_editar" onClick="editarReserva('+usuario.id+');" src="imgs/btn_editar.png" alt="">';
+		puesto.innerHTML = temp;
 }
 
 function reservar(){
+	var usuario;
 	if(input_name.value!="")
 	{
-		puesto_actual.className = "reservado";
-		puesto_actual.innerHTML = "<h2>Reservado</h2>"+input_name.value;
-		localStorage.setItem(id_actual,"<h2>Reservado</h2>"+input_name.value);
+		usuario = {nombre:input_name.value,id:id_boton};
+		actualizarEstado(puesto_actual,usuario);
+		reservas[id_boton] = usuario;
+		localStorage.setItem(id_actual,JSON.stringify(usuario));
 		cerrarVentana();
 	}
 	else
@@ -98,7 +123,6 @@ function pintarCuadricula(){
 
 
 }
-
 
 /*window.onload= init;
 function init(){
