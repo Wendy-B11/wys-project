@@ -21,7 +21,7 @@ function init()
 }
 
 function iniciarColores(){
-	colores["5"] = "https://img.freepik.com/vector-gratis/fondo-acuarela-cielo-estrellado-ensueno_79603-883.jpg?size=626&ext=jpg";
+	colores["5"] = "lightgreen";
 	colores["6"] = "teal";
 	colores["7"] = "mediumturquoise";
 	colores["8"] = "burlywood";

@@ -17,10 +17,10 @@
 }
 .btn_agregar{
 	position: absolute;
-	right: 10px;
+	margin: 0 auto;
 	bottom: 5px;
-	width: 16px;
-	height: 16px;
+	width: 30px;
+	height: 30px;
 	cursor: pointer;
 }
 .btn_editar,.btn_eliminar{
