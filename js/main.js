@@ -67,7 +67,7 @@ function registerFunction(){
             {
                 alert("El inicio de sesión ha sido exitoso");
                 localStorage.setItem("esta_logeado","true");
-                location.href = "otro.html";
+                location.href = "fecha.html";
 
             }
             else{

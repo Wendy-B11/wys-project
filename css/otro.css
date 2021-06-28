@@ -1,10 +1,10 @@
-html{
+/*html{
 	background-image: url(../imgs/hola.png);
 	background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed; 
-}
+}*/
 #cuadricula{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -23,13 +23,16 @@ html{
 	height: 16px;
 	cursor: pointer;
 }
-.btn_editar{
+.btn_editar,.btn_eliminar{
 	position: absolute;
 	right: 10px;
 	bottom: 5px;
 	width: 16px;
 	height: 16px;
 	cursor: pointer;
+}
+.btn_editar{
+	right: 30px;
 }
 
 .disponible{
@@ -48,7 +51,6 @@ html{
 	font-family: 'Arial Rounded Mt';
 	border-radius: 6px;
 }
-
 
 body{
 	margin: 0;

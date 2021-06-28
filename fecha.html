@@ -3,9 +3,57 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fecha</title>
+	<title></title>
+	<script>
+		var btn_consultar;
+		var fecha;
+
+		window.onload = init;
+
+		function init(){
+			fecha = document.getElementById("fecha");
+			btn_consultar = document.getElementById("btn_consultar");
+			btn_consultar.addEventListener("click",cargarReservas);
+			// btn_consultar.addEventListener("mouseenter",entrar);
+			// btn_consultar.addEventListener("mouseleave",salir);
+		}
+
+		function cargarReservas(){
+			//alert(fecha.value);
+			if(fecha.value != -1)
+			{
+				localStorage.setItem("hora",fecha.value);
+				location.href = "otro.html";
+			}
+			else
+			{
+				alert("Error, debe seleccionar la hora");
+			}
+		}
+		
+
+		function entrar(){
+			console.log("entre");
+		}
+
+		function salir(){
+			console.log("sali");
+		}
+	</script>
 </head>
 <body>
-
+	<h2>Horarios</h2>
+	<select id="fecha">
+		<option value="-1">Seleccion la hora</option>
+		<option value="5">5:00</option>
+		<option value="6">6:00</option>
+		<option value="7">7:00</option>
+		<option value="8">8:00</option>
+		<option value="9">9:00</option>
+		<option value="16">16:00</option>
+		<option value="18">18:00</option>
+		<option value="20">20:00</option>
+	</select>
+	<input type="button" id="btn_consultar" value="Consultar" />
 </body>
 </html>

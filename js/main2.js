@@ -2,29 +2,82 @@ var puesto_actual;
 var id_actual;
 var id_boton;
 var reservas;
-
+var hora_actual;
+var horario;
+var colores = [];
+var fondo;
 window.onload = init;
 
 function init()
 {
+	fondo = document.getElementById('fondo_reserva');
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
-	reservas = [];
+	hora_actual = localStorage.getItem("hora");
+	iniciarColores();
+	fondo.style.backgroundColor = cambiarColor();
 	cargarReserva();
+	iniciarHoras();
 }
+
+function iniciarColores(){
+	colores["5"] = "https://img.freepik.com/vector-gratis/fondo-acuarela-cielo-estrellado-ensueno_79603-883.jpg?size=626&ext=jpg";
+	colores["6"] = "teal";
+	colores["7"] = "mediumturquoise";
+	colores["8"] = "burlywood";
+	colores["9"] = "ivory";
+	colores["16"] = "blanchedalmond";
+	colores["18"] = "coral";
+	colores["20"] = "dimgrey";
+}
+
+function cambiarColor()
+{
+	return colores[hora_actual];
+}
+
+function iniciarHoras(){
+	horas["5"] = "<h2>5:00 am/h2>";
+	horas["6"] = "<h2>6:00 am/h2>";
+	horas["7"] = "<h2>7:00 am/h2>";
+	horas["8"] = "<h2>8:00 am/h2>";
+	horas["9"] = "<h2>9:00 am/h2>";
+	horas["16"] = "<h2>16:00 pm/h2>";
+	horas["18"] = "<h2>18:00 pm/h2>";
+	horas["20"] = "<h2>20:00 pm/h2>";
+}
+
+function cambiarHora()
+{
+	return horas[hora_actual];
+	
+}
+
 
 function cargarReserva(){
 	var puesto, usuario;
-	for(var i=1;i<=9;i++)//i = i + 1
+	reservas = [];
+
+	if(localStorage.getItem("horario")!=null)
 	{
-		//console.log(localStorage.getItem("puesto_"+i));
-		if(localStorage.getItem("puesto_"+i)!=null)
+		horario = JSON.parse(localStorage.getItem("horario"));
+		reservas = (horario[hora_actual]==null)?[]:horario[hora_actual];
+
+		if(reservas!=null)
 		{
-			puesto = document.getElementById("puesto_"+i);			
-			usuario = JSON.parse(localStorage.getItem("puesto_"+i));
-			actualizarEstado(puesto,usuario);
-			reservas[i] = usuario;
+			for(var i=1;i<=9;i++)//i = i + 1
+			{
+				if(reservas[i]!=null)
+				{
+					puesto = document.getElementById("puesto_"+i);			
+					usuario = reservas[i];
+					actualizarEstado(puesto,usuario);
+				}
+			}
 		}
+	}
+	else{
+		horario = [];
 	}
 }
 
@@ -45,27 +98,52 @@ function crearReserva(numero){
 	mostrarVentana({nombre:"",numero:numero});
 }
 
+function actualizarReserva(usuario){
+	actualizarEstado(puesto_actual,usuario);
+	reservas[id_boton] = usuario;
+	horario[hora_actual] = reservas;
+	localStorage.setItem("horario",JSON.stringify(horario));
+}
+
 function editarReserva(numero){
 	mostrarVentana({nombre:reservas[numero].nombre,numero:numero});	
 }
 
+function eliminarReserva(numero){
+	var entrada = confirm("¿Seguro que quiere borrar a "+numero+"?")
+	if(entrada)
+	{
+		id_boton = numero;
+		actualizarReserva(null);
+	}
+}
+
 function actualizarEstado(puesto,usuario)
 {
-	 var temp;
-	  puesto.className = "reservado";
+	var temp;
+	if(usuario!=null)
+	{
+		puesto.className = "reservado";
 		temp = "<h2>Reservado</h2>"+usuario.nombre;
 		temp += '<img class="btn_editar" onClick="editarReserva('+usuario.id+');" src="imgs/btn_editar.png" alt="">';
-		puesto.innerHTML = temp;
+		temp += '<img src="imgs/btn_eliminar.png" onClick="eliminarReserva('+usuario.id+');" class="btn_eliminar" alt="">';
+	}
+	else{
+		puesto = document.getElementById("puesto_"+id_boton);
+		puesto.className = "disponible";
+		temp = "<h2>Disponible</h2>";
+		temp += '<img class="btn_agregar" onClick="crearReserva('+id_boton+');" src="imgs/btn_agregar.png" alt="">';
+	}
+	puesto.innerHTML = temp;
 }
+
 
 function reservar(){
 	var usuario;
 	if(input_name.value!="")
 	{
 		usuario = {nombre:input_name.value,id:id_boton};
-		actualizarEstado(puesto_actual,usuario);
-		reservas[id_boton] = usuario;
-		localStorage.setItem(id_actual,JSON.stringify(usuario));
+		actualizarReserva(usuario);
 		cerrarVentana();
 	}
 	else
@@ -73,57 +151,6 @@ function reservar(){
 		alert("Error, introduzca el nombre de la reserva");
 	}
 }
-
-function pintarCuadricula(){
-	
-	var html = "";
-	//var inicio = 1;
-	var fin = 3;
-	var grid = document.getElementById("cuadricula");
-	var contador = 1;
-	var valor = 0;
-	var salon = [];
-	salon[0] = [true,false,true];
-	salon[1] = [false,false,true];
-	salon[2] = [true,false,false];
-
-	var fila = 0;
-	var col = 0;
-
-	console.log(salon[0][0]);
-	console.log(salon[1][1]);
-	console.log(salon[2][2]);
-
-	if(localStorage.getItem("esta_logeado")=="true")
-	{
-		while(contador<=fin)
-		{
-			console.log(fila,col);
-			valor = salon[0][col];
-			fila = fila + 1;
-			col = col + 1;
-
-			if(valor)// if(contador%2==0)
-			{
-				html = html + '<input type="button" class="naranja" value="'+contador+'">';
-			}
-			else
-			{
-				html = html + '<input type="button" class="gris" value="'+contador+'">';
-			}
-			contador = contador + 1;
-		}
-
-		grid.innerHTML = html;
-
-	}
-	else{
-		grid.innerHTML = "<h1>Esta seccion es bajo logeo</h1>";
-	}
-
-
-}
-
 /*window.onload= init;
 function init(){
 	cerrar.addEventListener("click", cerraVentana);
