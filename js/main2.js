@@ -13,6 +13,8 @@ function init()
 {
 	hora = localStorage.getItem("hora");
 	document.getElementById("tittle").innerHTML=('Reservas GYM ' + hora + ":00");
+	nombre = localStorage.getItem("usuario");
+	document.getElementById("saludo").innerHTML=('¡Bienvenid@ ' + nombre + "!");
 	fondo = document.getElementById('fondo_reserva');
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
@@ -25,14 +27,14 @@ function init()
 }
 
 function iniciarColores(){
-	colores["5"] = "lightgreen";
-	colores["6"] = "teal";
-	colores["7"] = "mediumturquoise";
-	colores["8"] = "burlywood";
-	colores["9"] = "ivory";
-	colores["16"] = "blanchedalmond";
-	colores["18"] = "coral";
-	colores["20"] = "dimgrey";
+	colores["5"] = "#D6A2A2";
+	colores["6"] = "#A2AFD6";
+	colores["7"] = "#A2D6CE";
+	colores["8"] = "#AD9A9A";
+	colores["9"] = "#DCB9ED";
+	colores["16"] = "#7B7AAF";
+	colores["18"] = "#AF7A7A";
+	colores["20"] = "#60CD8C";
 }
 
 function cambiarColor()
@@ -156,8 +158,9 @@ function reservar(){
 	}
 }
 function salir(){
-	var confirmar =window.confirm("seguro de que quieres salir?")
+	var confirmar =window.confirm("¿Seguro de que quieres salir? ࿐")
 	if (confirmar == true){
 	location.href = "index.html";
 	}
 }
+

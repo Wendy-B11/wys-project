@@ -166,3 +166,21 @@ button{
 	color: rgb(202, 202, 202);
 	font-size:25px;
 }
+#saludo{
+	margin-top: 40px;
+	text-align: center;
+	font-size: 2em;
+	color:snow;
+	border-radius: 100%;
+	text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+}
+#volvers{
+    margin-top: 20px;
+	cursor: pointer;
+	text-align: right;
+	font-size: 10px;
+	color:snow;
+	border-radius: 100%;
+	text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+	transition: 300ms;
+}
