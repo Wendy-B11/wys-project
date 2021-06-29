@@ -86,56 +86,51 @@ function registerFunction(){
     
 /*************************************************/
 
-		var nombre, usuarioRegistro, email, contraRegistro, confirmarRegistro, regis;
+        var nombre, usuarioRegistro, email, contraRegistro, confirmarRegistro, regis;
 
-		function guardar(){
-			if(contraRegistro.value == confirmarRegistro.value && contraRegistro.value!="")
-			{
-				if(usuarioRegistro.value!="")
-				{
-					localStorage.setItem("usuario",usuarioRegistro.value);
-					localStorage.setItem("contrasena",contraRegistro.value);
-					location.href = "login.html";
-					alert("Inicie sesión para continuar");
-				}
-				else
-				{
-					alert("Valide los datos");
-				}
-			}
-			else
-			{
-				alert("Valide los datos");
-			}
-		}
+        function guardar(){
+            if(contraRegistro.value == confirmarRegistro.value && contraRegistro.value!="")
+            {
+                if(usuarioRegistro.value!="")
+                {
+                    localStorage.setItem("usuario",usuarioRegistro.value);
+                    localStorage.setItem("contrasena",contraRegistro.value);
+                    location.href = "login.html";
+                    alert("Inicie sesión para continuar");
+                }
+                else
+                {
+                    alert("Valide los datos");
+                }
+            }
+            else
+            {
+                alert("Valide los datos");
+            }
+        }
 
 
 
  /*      let nombre, usuarioRegistro, contraRegistro, confirmarRegistro, regis;
-
         function obtener(evento){
-
         let contrasena_ok = localStorage.getItem("contrasena");
         let usuario_ok = localStorage.getItem("usuario");
         console.log(localStorage.getItem("contrasena"),localStorage.getItem("usuario"));
-
         if (nombre.value !="" && usuarioRegistro.value !="" && contraRegistro.value !="" && confirmarRegistro.value !="" && contraRegistro.value==confirmarRegistro.value)
         {
             //console.log(nombre.value)
             //console.log(usuario.value)
             //console.log(contrasena.value)
-
             if (usuarioRegistro.value == usuario_ok && contraRegistro.value == contrasena_ok && confirmarRegistro.value == contrasena_ok)
             {
                 alert("El registro ha sido exitoso");
                 location.href = "otro.html";
-
             }
         else{
-        	if (contraRegistro.value!=confirmarRegistro.value)
-        	{
-        		alert("Error: Las contraseñas no coinciden")
-        	}
+            if (contraRegistro.value!=confirmarRegistro.value)
+            {
+                alert("Error: Las contraseñas no coinciden")
+            }
         else
         {
              alert("Error: Campos vacíos")
@@ -143,7 +138,3 @@ function registerFunction(){
     }
 }
 }*/
-
-    
-
-

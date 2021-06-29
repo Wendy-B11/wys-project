@@ -5,3 +5,10 @@ body{
     background-position: center;
     background-attachment: fixed;
 }
+h2{
+    margin-top: 20px;
+	font-size:30px;
+	color:snow;
+	border-radius: 100%;
+	text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100)
+}

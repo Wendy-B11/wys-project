@@ -65,10 +65,8 @@
     <title>Login</title>
 </head>
 <body>
-
     <main>
         <div class="contenido">
-
             <div class="box">
                 <div class="loginBox">
                     <h3>¿Ya tienes una cuenta?</h3>
@@ -80,13 +78,10 @@
                     <p>Registrate para iniciar sesión</p>
                     <button id="botonRegister">Registrarse</button>
                 </div>
-
             </div>
             <div class="loginRegister">
                 <form action="" class="login">
-
                     <h2>Iniciar Sesión</h2>
-
                     <input type="text" placeholder="Usuario" id="usuario">
                     <input type="password" placeholder="Contraseña" id="contrasena">
                     <input type="button" class="enviar" value="Ingresar" id="registro">
@@ -101,9 +96,7 @@
                     <input type="button" class="enviar" value="Registrarse" id="regis">
                 </form>
             </div>
-
         </div>
-
         
     </main>
     
@@ -128,29 +121,22 @@
             usuario= document.getElementById("usuario");
             contraseña= document.getElementById("contrasena");
             registrarse= document.getElementById("registrarse");
-
             registrarse.addEventListener("click", obtenerDatos);
         }
-
         function obtenerDatos(evento){
-
-
         let contrasena_ok = localStorage.getItem("contrasena");
         let usuario_ok = localStorage.getItem("usuario");
         console.log(localStorage.getItem("contrasena"),localStorage.getItem("usuario"));
-
         if (usuario.value !="" && contrasena.value !="")
         {
             //console.log(nombre.value)
             //console.log(usuario.value)
             //console.log(contrasena.value)
-
             if (usuario.value == usuario_ok && contrasena.value == contrasena_ok)
             {
                 alert("El inicio de sesión ha sido exitoso");
                 localStorage.setItem("esta_logeado","true");
                 location.href = "otro.html";
-
             }
             else{
                 alert("Usuario o clave incorrectas")
@@ -163,24 +149,18 @@
         {
              alert("Error: Campos vacíos")
         }
-
     }
     </script>
 </head>
 <body>
     <body>
-
         <h1 class="tittle">Registro</h1>
-
         <form class ="form" method="POST" action="Aquí va lo otro" > 
-
                 <input type="text"  placeholder="*Nombre:" id="nombre"><br><br>
                 <input type="text" placeholder="*Nombre de usuario:" id="usuario"><br><br>
                 <input type="Password" type="password"  placeholder="*Constraseña:"id="contrasena"><br><br>
                 <input type="Password" type="password"  placeholder="*Repita su constraseña:" ><br><br>
                 <input type="button" class="enviar" value="Registrarse" id="registrarse">
-
         </form>
-
 </body>
 </html>-->
