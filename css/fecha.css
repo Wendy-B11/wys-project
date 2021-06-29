@@ -6,9 +6,40 @@ body{
     background-attachment: fixed;
 }
 h2{
+    text-align: center;
     margin-top: 20px;
-	font-size:30px;
+	font-size:40px;
 	color:snow;
 	border-radius: 100%;
-	text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100)
+	text-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+}
+select {
+     margin: 0 auto;
+     background: transparent;
+     border: none;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     width: 250px;
+     box-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+     border-radius: 5%;
+     width: 220px;
+     height: 50px;
+  }
+#btn_consultar{
+    position: relative;
+    top:10px;
+    left: 430px;
+     width: 110px;
+     height: 30px;
+    background: transparent;
+    box-shadow: 2px 2px 5px black, 5px 5px 10px rgb(17, 81, 100), 10px 10px 20px rgb(17, 81, 100);
+    border-radius: 5%;
+    left
+}
+#fecha{
+    position: absolute;
+    right:0px;
+    left:0px;
+
 }
